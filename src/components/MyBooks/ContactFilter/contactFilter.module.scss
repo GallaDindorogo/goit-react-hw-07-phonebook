@@ -1,5 +1,6 @@
 .formGroup {
   display: grid;
+  align-items: center;
   grid-template-columns: 50px 1fr;
   gap: 15px;
   margin-bottom: 15px;
@@ -7,9 +8,14 @@
 
 label {
   margin-bottom: 10px;
-  color: rgb(32, 30, 30);
+  color: rgb(188, 175, 175);
 }
 
 label:last-child {
   margin-bottom: 0px;
+}
+
+.inputStyle {
+  max-width: 400px;
+  max-height: 35px;
 }

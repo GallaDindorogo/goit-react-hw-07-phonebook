@@ -1,35 +1,45 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllContacts, getFilter } from 'redux/selectors';
-import { deleteContact } from 'redux/contactsSlice';
+import { useEffect } from 'react';
+
+import { getFilter, getAllContacts } from 'redux/selectors';
+
+import { fetchAllContacts, fetchDeleteContact } from 'redux/contactsOperations';
+
+import Loader from 'schare/Loader/Loader';
 
 import styles from './contactList.module.scss';
 
 const ContactList = () => {
-  const items = useSelector(getAllContacts);
+  const { items, isLoading } = useSelector(getAllContacts);
   const filter = useSelector(getFilter);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
+
+  const handleDeleteContact = id => {
+    dispatch(fetchDeleteContact(id));
+  };
 
   const getVisibleContacts = () => {
     if (!filter) {
       return items;
     }
     const normalizedFilter = filter.toLowerCase();
-    const resalt = items.filter(({ name, number }) => {
+    const result = items.filter(({ name, number }) => {
       return (
         name.toLowerCase().includes(normalizedFilter) ||
         number.toLowerCase().includes(normalizedFilter)
       );
     });
-    return resalt;
+    return result;
   };
 
   const filtredContacts = getVisibleContacts();
 
-  const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
-  };
-
-  const contacts = filtredContacts.map(({ id, name, number }) => (
+  const contacts = filtredContacts.map(({ name, number, id }) => (
     <li className={styles.item} key={id}>
       <p className={styles.contact}>
         {name} .....tel. {number}
@@ -39,7 +49,12 @@ const ContactList = () => {
       </button>
     </li>
   ));
-  return <ol className={styles.list}>{contacts}</ol>;
+  return (
+    <ol className={styles.list}>
+      {isLoading && <Loader />}
+      {contacts}
+    </ol>
+  );
 };
 
 export default ContactList;

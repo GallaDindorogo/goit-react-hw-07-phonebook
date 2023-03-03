@@ -15,6 +15,7 @@ const ContactFilter = () => {
     <div className={styles.formGroup}>
       <h4>Find</h4>
       <input
+        className={styles.inputStyle}
         name="filter"
         value={filter}
         onChange={handleFilter}

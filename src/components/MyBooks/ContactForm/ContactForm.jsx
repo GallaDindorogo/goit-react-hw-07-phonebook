@@ -1,18 +1,20 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 import styles from './contactForm.module.scss';
 
-import { addContact } from 'redux/contactsSlice';
-import { getAllContacts } from 'redux/selectors';
+import { fetchAllContacts, fetchAddContact } from 'redux/contactsOperations';
 
 const ContactForm = () => {
   let inputValues = {
     name: '',
     number: '',
   };
-
-  const items = useSelector(getAllContacts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
 
   const handleChange = e => {
     const objectKey = e.target.name;
@@ -23,12 +25,8 @@ const ContactForm = () => {
 
   const handleAddContact = data => {
     const name = data.name;
-    if (items.find(contact => contact.name === name)) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
     const number = data.number;
-    const action = addContact({ name, number });
+    const action = fetchAddContact({ name, number });
     dispatch(action);
   };
 
