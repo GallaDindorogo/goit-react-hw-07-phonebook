@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-07-phonebook/static/css/main.886ee7d4.css",
-    "main.js": "/goit-react-hw-07-phonebook/static/js/main.35d519bf.js",
+    "main.css": "/goit-react-hw-07-phonebook/static/css/main.dc414efe.css",
+    "main.js": "/goit-react-hw-07-phonebook/static/js/main.04a3dd79.js",
     "static/media/levender1.jpg": "/goit-react-hw-07-phonebook/static/media/levender1.69c32868049fce34cabb.jpg",
     "index.html": "/goit-react-hw-07-phonebook/index.html",
-    "main.886ee7d4.css.map": "/goit-react-hw-07-phonebook/static/css/main.886ee7d4.css.map",
-    "main.35d519bf.js.map": "/goit-react-hw-07-phonebook/static/js/main.35d519bf.js.map"
+    "main.dc414efe.css.map": "/goit-react-hw-07-phonebook/static/css/main.dc414efe.css.map",
+    "main.04a3dd79.js.map": "/goit-react-hw-07-phonebook/static/js/main.04a3dd79.js.map"
   },
   "entrypoints": [
-    "static/css/main.886ee7d4.css",
-    "static/js/main.35d519bf.js"
+    "static/css/main.dc414efe.css",
+    "static/js/main.04a3dd79.js"
   ]
 }
