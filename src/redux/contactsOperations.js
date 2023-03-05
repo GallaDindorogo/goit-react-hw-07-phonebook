@@ -35,10 +35,11 @@ export const fetchAddContact = createAsyncThunk(
       const normalizedNumber = number.toLowerCase();
       const result = contacts.items.find(({ name, number }) => {
         return (
-          name.toLowerCase() === normalizedName &&
+          name.toLowerCase() === normalizedName ||
           number.toLowerCase() === normalizedNumber
         );
       });
+      console.log(result);
       if (result) {
         alert(`${name}. Tel. ${number} is already exist`);
         return false;
